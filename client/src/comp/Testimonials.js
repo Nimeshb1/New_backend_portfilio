@@ -78,7 +78,12 @@ const Testimonials = () => {
               <Col className="newCard col-lg-5 col-4 ">
                 <div className="footerimg2">
                   <img
-                    src={process.env.REACT_APP_PRODUCTIONURL + "/" + item.img}
+                    src={
+                      process.env.REACT_APP_PRODUCTIONURL +
+                      "/" +
+                      "image/" +
+                      item.img
+                    }
                     alt=""
                     style={{ objectFit: "contain" }}
                     className="footerimg3"

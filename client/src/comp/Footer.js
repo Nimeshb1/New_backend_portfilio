@@ -30,25 +30,21 @@ export const Footer = () => {
                   marginTop: "2rem",
                 }}
               >
-                <a href="google.com">
-                  {" "}
-                  <i class="fa-brands fa-facebook"></i>
+                <a href="https://facebook.com/ne.mesh.5">
+                  <i class="fa-brands fa-facebook text-white"></i>{" "}
                 </a>
-                <a href="google.com">
-                  {" "}
-                  <i class="fa-brands fa-twitter"></i>
+                <a href="https://x.com/nimeshbista5">
+                  <i class="fa-brands fa-twitter text-white"></i>{" "}
                 </a>
-                <a href="google.com">
-                  {" "}
-                  <i class="fa-brands fa-instagram"></i>
+                <a href="https://instagram.com/ne.mesh">
+                  <i class="fa-brands fa-instagram text-white"></i>
                 </a>
-                <a href="google.com">
-                  {" "}
-                  <i class="fa-brands fa-linkedin"></i>
+                <a href="https://github.com/Nimeshb1">
+                  <i class="fa-brands fa-github text-white"></i>
                 </a>
-                <a href="google.com">
+                <a href="https://www.linkedin.com/in/nimesh-bista-3944b019b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app ">
                   {" "}
-                  <i class="fa-brands fa-github"></i>
+                  <i class="fa-brands fa-linkedin text-white"></i>
                 </a>
               </div>
             </div>

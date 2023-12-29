@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import img from "../img/defultprofile.png";
 import { getReview } from "../axiosHelper/axios";
+import moduleName from "../";
 
 const Testimonials = () => {
   const [obj, setobj] = useState({});
@@ -77,7 +78,7 @@ const Testimonials = () => {
               <Col className="newCard col-lg-5 col-4 ">
                 <div className="footerimg2">
                   <img
-                    src={require(`../image/${item.img}`)}
+                    src={process.env.REACT_APP_PRODUCTIONURL + "/" + item.img}
                     alt=""
                     style={{ objectFit: "contain" }}
                     className="footerimg3"

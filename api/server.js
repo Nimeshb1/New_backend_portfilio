@@ -5,8 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import router from "./router/Router.js";
 import { mongoConnect } from "./dbconfig/dbconfig.js";
-import path from "path";
-const _dirname = path.resolve();
+
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -18,13 +17,16 @@ mongoConnect();
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
+app.use(express.static("public"));
 
 // globel error handeler
 app.use((error, req, res, next) => {
-  const errorCode = error.errorCode || 500;
-  res.status(errorCode).json({
+  const statusCode = error.statusCode || 500;
+  const errorMessage = error.message || "Internal Server Error";
+
+  res.status(statusCode).json({
     status: "error",
-    message: errorCode.message,
+    message: errorMessage,
   });
 });
 

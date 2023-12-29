@@ -2,8 +2,26 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import img from "../img/project1.jpg";
 import img1 from "../img/project2.jpg";
+import img2 from "../img/l1.jpg";
+import img3 from "../img/l2.jpg";
+import img4 from "../img/p1.jpg";
+import img5 from "../img/p2.jpg";
 
 const Projects = () => {
+  const obj = [
+    {
+      title: "Portfolio React",
+      subtitle: "Portfoli Website Development for portfolio",
+    },
+    {
+      title: "Library Managment System ",
+      subtitle: "Library Managment System Development for Library",
+    },
+    {
+      title: "Roofing Website",
+      subtitle: "Website for roofing Professional Roofing company",
+    },
+  ];
   return (
     <div className="project">
       <Container>
@@ -42,7 +60,7 @@ const Projects = () => {
               }}
             >
               <div className="hedaing  d-flex justify-content-end gap-4">
-                <a href="">
+                <a href="https://github.com/Nimeshb1">
                   {" "}
                   <button sty>Github</button>
                 </a>
@@ -53,7 +71,7 @@ const Projects = () => {
               </div>
               <div className="subheading text-white">
                 <div className="title" style={{ fontSize: "2rem" }}>
-                  <i class="fa-solid fa-code"></i> Portfolio React
+                  <i class="fa-solid fa-code"></i> {obj[2].title}
                 </div>
                 <div
                   className="sub-title"
@@ -63,7 +81,7 @@ const Projects = () => {
                     marginTop: "1rem",
                   }}
                 >
-                  Portfoli Website <p>Development for Portfolio</p>
+                  {obj[2].subtitle}
                 </div>
               </div>
               <div
@@ -74,11 +92,11 @@ const Projects = () => {
               >
                 <div className="img1">
                   {" "}
-                  <img src={img} alt="" width={800} />
+                  <img src={img5} alt="" width={800} />
                 </div>
                 <div className="img2 " style={{ marginLeft: "9rem" }}>
                   {" "}
-                  <img src={img1} alt="" height={500} />
+                  <img src={img4} alt="" height={500} />
                 </div>
               </div>
             </div>
@@ -90,7 +108,7 @@ const Projects = () => {
               style={{ overflow: "hidden" }}
             >
               <div className="hedaing  d-flex justify-content-end gap-4">
-                <a href="">
+                <a href="https://github.com/Nimeshb1">
                   {" "}
                   <button sty>Github</button>
                 </a>
@@ -139,7 +157,7 @@ const Projects = () => {
               }}
             >
               <div className="hedaing  d-flex justify-content-end gap-4">
-                <a href="">
+                <a href="https://github.com/Nimeshb1">
                   {" "}
                   <button sty>Github</button>
                 </a>
@@ -150,7 +168,7 @@ const Projects = () => {
               </div>
               <div className="subheading text-white">
                 <div className="title">
-                  <i class="fa-solid fa-code"></i> Portfolio React
+                  <i class="fa-solid fa-code"></i> {obj[1].title}
                 </div>
                 <div
                   className="sub-title"
@@ -159,7 +177,7 @@ const Projects = () => {
                     WebkitTextStroke: "1px",
                   }}
                 >
-                  Portfoli Website <p>Development for Portfolio</p>
+                  {obj[1].subtitle}
                 </div>
               </div>
               <div
@@ -170,11 +188,11 @@ const Projects = () => {
               >
                 <div className="img1">
                   {" "}
-                  <img src={img} alt="" width={800} />
+                  <img src={img2} alt="" width={800} />
                 </div>
                 <div className="img2 " style={{ marginLeft: "9rem" }}>
                   {" "}
-                  <img src={img1} alt="" height={500} />
+                  <img src={img3} alt="" height={500} />
                 </div>
               </div>
             </div>

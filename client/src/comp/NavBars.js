@@ -26,7 +26,7 @@ export const NavBars = () => {
             <Nav.Link href="#features"></Nav.Link>
             <Nav.Link href="#pricing"></Nav.Link>
           </Nav>
-          <Nav className="d-flex g-5  fs-5 ">
+          {/* <Nav className="d-flex g-5  fs-5 ">
             <Nav.Link href="#heroSection" className="text-white">
               Home
             </Nav.Link>
@@ -40,7 +40,7 @@ export const NavBars = () => {
             <Nav.Link href="#contact" className="text-white">
               Contact
             </Nav.Link>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

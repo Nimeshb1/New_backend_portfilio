@@ -29,12 +29,7 @@ const About = ({ project }) => {
                 I've been developing <p></p> websites since 2022
               </h2>
               <p></p>
-              <h6 className="text-white">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat.
-              </h6>
+              <h6 className="text-white"></h6>
             </div>
           </Col>
           <Col className="aboutcol2">
@@ -58,12 +53,7 @@ const About = ({ project }) => {
                 </div>
               </div>
 
-              <h6 className="mt-5 text-white">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat.
-              </h6>
+              <h6 className="mt-5 text-white"></h6>
             </div>
           </Col>
         </Row>
@@ -71,15 +61,13 @@ const About = ({ project }) => {
           <Col>
             <hr className="text-white mb-5" />
             <div
-              className="pastWork text-white d-lg-flex d-md-flex justify-content-between text-center"
+              className="pastWork text-white d-lg-flex d-md-flex justify-content-around text-center"
               style={{
                 marginBottom: "3rem",
               }}
             >
               <h4>PREVIOUSLY WORKED ON</h4>
-              <h4>Google</h4>
-              <h4>facebook</h4>
-              <h4>Youtube</h4>
+              <h4>Internship at Dented code</h4>
             </div>
           </Col>
         </Row>

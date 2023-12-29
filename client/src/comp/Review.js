@@ -44,7 +44,7 @@ const Review = () => {
     formdata.append("message", fom.message);
     formdata.append("gender", fom.gender);
     const { status, message } = await postReview(formdata);
-    console.log(fom);
+
     if (status === "success") {
       fatchData();
       toast[status](message);

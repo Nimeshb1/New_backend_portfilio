@@ -12,7 +12,6 @@ const Testimonials = () => {
     const { data } = await getReview();
 
     setobj({ data });
-    console.log(data);
   };
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { getReview, reviewPost } from "../moodle/moodle.js";
 import multer from "multer";
 import path from "path";
 const router = express.Router();
-import fs from "fs/promises";
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/image");
@@ -36,7 +36,7 @@ router.post("/", upload.single("img"), async (req, res, next) => {
     if (data?._id) {
       return res.json({
         status: "success",
-        message: "Thanks For your Review",
+        message: "Thanks For your Review .🤙🤙🤙",
       });
     }
     res.json({
@@ -44,6 +44,20 @@ router.post("/", upload.single("img"), async (req, res, next) => {
       message: "Something went wrong, Please try again",
     });
   } catch (error) {
+    const message = error.message;
+
+    if (
+      message.includes(
+        "Cannot destructure property 'filename' of 'req.file' as it is undefined."
+      )
+    ) {
+      res.json({
+        status: "error",
+        message:
+          "Your have already add a review. For another review please refresh this browser. 😊😊",
+      });
+    }
+    console.log(error.message);
     next(error.message);
   }
 });

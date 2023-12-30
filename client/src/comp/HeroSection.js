@@ -83,20 +83,20 @@ const HeroSection = () => {
                     }}
                   >
                     <a href="https://facebook.com/ne.mesh.5">
-                      <i class="fa-brands fa-facebook text-white"></i>{" "}
+                      <i className="fa-brands fa-facebook text-white"></i>{" "}
                     </a>
                     <a href="https://x.com/nimeshbista5">
-                      <i class="fa-brands fa-twitter text-white"></i>{" "}
+                      <i className="fa-brands fa-twitter text-white"></i>{" "}
                     </a>
                     <a href="https://instagram.com/ne.mesh">
-                      <i class="fa-brands fa-instagram text-white"></i>
+                      <i className="fa-brands fa-instagram text-white"></i>
                     </a>
                     <a href="https://github.com/Nimeshb1">
-                      <i class="fa-brands fa-github text-white"></i>
+                      <i className="fa-brands fa-github text-white"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/nimesh-bista-3944b019b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app ">
                       {" "}
-                      <i class="fa-brands fa-linkedin text-white"></i>
+                      <i className="fa-brands fa-linkedin text-white"></i>
                     </a>
                   </h3>
                 </div>

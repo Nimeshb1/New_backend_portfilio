@@ -48,7 +48,7 @@ const Study = () => {
             }}
           >
             {education.map((item) => (
-              <div className="wrapdiv">
+              <div key={item.subtitle} className="wrapdiv">
                 <div
                   className="date text-white "
                   style={{ fontSize: "2rem", WebkitTextStroke: "1px" }}

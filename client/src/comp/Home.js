@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
 import HeroSection from "./HeroSection";
 import About from "./About";
@@ -10,8 +10,19 @@ import Contact from "./Contact";
 import Review from "./Review";
 import img1 from "../img/project1.jpg";
 import img2 from "../img/project2.jpg";
+import { getReview } from "../axiosHelper/axios";
 
 const Home = () => {
+  const [obj, setobj] = useState({});
+  const fatchData = async () => {
+    const { data } = await getReview();
+
+    setobj({ data });
+  };
+
+  useEffect(() => {
+    fatchData();
+  }, []);
   const ProjectApi = [
     {
       heading: "Poftolio React",
@@ -39,8 +50,8 @@ const Home = () => {
       <About project={ProjectApi} />
       <MySkills />
       <Projects />
-      <Testimonials />
-      <Review />
+      <Testimonials obj={obj} />
+      <Review fatchData={fatchData} />
       <Study />
       <Contact />
     </Layout>

@@ -45,6 +45,7 @@ const Contact = () => {
             <Form style={{ marginTop: "10rem" }}>
               {fomobj.map((item) => (
                 <input
+                  key={item.type}
                   type={item.type}
                   name={item.name}
                   placeholder={item.placeholder}

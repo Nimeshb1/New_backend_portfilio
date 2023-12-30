@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { getReview, postReview } from "../axiosHelper/axios";
 import { toast } from "react-toastify";
 
-const Review = () => {
-  const [fom, setfom] = useState({});
+const Review = ({ fatchData }) => {
+  let initial = {
+    img: "",
+    name: "",
+    position: "",
+    company: "",
+    gender: "",
+  };
+  const [fom, setfom] = useState(initial);
+  const [loader, setloader] = useState(false);
   const fomobj = [
     {
       name: "name",
@@ -22,7 +30,7 @@ const Review = () => {
       type: "text",
     },
   ];
-  console.log(fom);
+
   const handelOnChange = async (e) => {
     const { name, value } = e.target;
     setfom({ ...fom, [name]: value });
@@ -32,12 +40,13 @@ const Review = () => {
 
     setfom({ ...fom, [name]: files[0] });
   };
-
+  console.log(fom);
   const handelOnSubmitted = async (e) => {
     e.preventDefault();
+    setloader(true);
 
     const formdata = new FormData();
-    formdata.append("img", fom.img, fom.img.name);
+    formdata.append("img", fom.img);
     formdata.append("name", fom.name);
     formdata.append("position", fom.position);
     formdata.append("company", fom.company);
@@ -46,14 +55,15 @@ const Review = () => {
     const { status, message } = await postReview(formdata);
 
     if (status === "success") {
+      setfom(initial);
       fatchData();
       toast[status](message);
+      setloader(false);
     } else {
       toast.error(message);
+      setloader(false);
+      setfom(initial);
     }
-  };
-  const fatchData = async () => {
-    const { data } = await getReview();
   };
 
   return (
@@ -78,12 +88,13 @@ const Review = () => {
           </Col>
           <Col>
             <Form
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               style={{ marginTop: "10rem", marginBottom: "2rem" }}
               onSubmit={handelOnSubmitted}
             >
-              {fomobj.map((item) => (
+              {fomobj.map((item, i) => (
                 <input
+                  key={i}
                   required
                   type={item.type}
                   name={item.name}
@@ -173,22 +184,25 @@ const Review = () => {
                   </select>
                 </div>
               </div>
-
-              <button
-                type="submit"
-                style={{
-                  background: "none",
-                  borderBottom: "3",
-                  color: "white",
-                  outline: "0px",
-                  borderBottom: "3px solid white",
-                }}
-              >
-                {" "}
-                <h4 className=" d-flex gap-2">
-                  Add<i class="fa-solid fa-arrow-right mt-1"></i>{" "}
-                </h4>
-              </button>
+              {loader === true ? (
+                <Spinner animation="border" variant="light" />
+              ) : (
+                <button
+                  type="submit"
+                  style={{
+                    background: "none",
+                    borderBottom: "3",
+                    color: "white",
+                    outline: "0px",
+                    borderBottom: "3px solid white",
+                  }}
+                >
+                  {" "}
+                  <h4 className=" d-flex gap-2">
+                    Add<i class="fa-solid fa-arrow-right mt-1"></i>{" "}
+                  </h4>
+                </button>
+              )}
             </Form>
           </Col>
         </Row>

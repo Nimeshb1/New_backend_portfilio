@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import img from "../img/defultprofile.png";
-import { getReview } from "../axiosHelper/axios";
-import moduleName from "../";
 
-const Testimonials = () => {
-  const [obj, setobj] = useState({});
+const Testimonials = ({ obj }) => {
   const [slide, setslide] = useState(0);
   const [current, setCurrent] = useState(1);
-
-  const fatchData = async () => {
-    const { data } = await getReview();
-
-    setobj({ data });
-  };
-
-  useEffect(() => {
-    fatchData();
-  }, []);
 
   const rightArrowClick = () => {
     setCurrent(current === obj.data.length - 1 ? 0 : current + 1);
@@ -50,7 +36,7 @@ const Testimonials = () => {
           >
             <div className="text">
               <h4 className="text-white">
-                <span className="text-primary "> / </span> {""}Testimonials
+                <span className="text-primary "> / </span> Testimonials
               </h4>
               <p></p>
               <h2 className="skillText fs-sm-1">
@@ -69,6 +55,7 @@ const Testimonials = () => {
         >
           {obj.data?.map((item, i) => (
             <div
+              key={i}
               className="mainbodyt  d-lg-flex "
               style={{
                 transform: `translateX(${slide}%)`,

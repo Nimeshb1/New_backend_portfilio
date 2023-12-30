@@ -17,7 +17,7 @@ export const NavBars = () => {
     >
       <Container>
         <Navbar.Brand href="#home" className="fs-2">
-          <i class="fa-solid fa-code fs-3 text-primary"></i> {""}
+          <i className="fa-solid fa-code fs-3 text-primary"></i> {""}
           Nimesh Bista
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

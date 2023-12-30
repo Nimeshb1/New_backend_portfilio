@@ -140,12 +140,16 @@ const Review = ({ fatchData }) => {
               <div className="imggender d-lg-flex mb-5">
                 <div className="chooseimg d-grid">
                   <label className="text-white fs-5 mb-3 ">Choose Image</label>
+                  <label className="text-white fs-6 mb-3 ">
+                    (*please try to choose image that you're is in center*)
+                  </label>
                   <Form.Group controlId="formFileSm" className="mb-3 ">
                     <Form.Control
                       type="file"
                       size="sm"
                       name="img"
                       onChange={handelImage}
+                      required
                     />
                   </Form.Group>
                 </div>

@@ -17,9 +17,10 @@ html {
   display: flex;
   align-items: center;
   font-size: 15rem;
-
+  animation: navbar 3s;
   justify-content: space-around;
 }
+
 .nimesh {
   animation: nimesh 3s;
   position: relative;

@@ -75,7 +75,7 @@ const Testimonials = ({ obj }) => {
                   />
                 </div>
               </Col>
-              <Col className="col-lg-4" style={{ paddingLeft: "3rem" }}>
+              <Col className="col-lg-7" style={{ paddingLeft: "3rem" }}>
                 <Card
                   style={{
                     backgroundColor: "transparent",
@@ -88,7 +88,28 @@ const Testimonials = ({ obj }) => {
                       style={{ fontSize: "3rem", WebkitTextStroke: "1px" }}
                     >
                       {" "}
-                      {item.company}
+                      {item.gender === "male" ? (
+                        <i
+                          style={{
+                            fontSize: "2rem",
+                            color: "blue",
+                            marginRight: "7px",
+                          }}
+                          className="fa-solid fa-user"
+                        ></i>
+                      ) : (
+                        <span
+                          style={{
+                            fontSize: "2rem",
+                            color: "yellow",
+                            marginRight: "7px",
+                          }}
+                          class="material-symbols-outlined"
+                        >
+                          face_3
+                        </span>
+                      )}
+                      {item.name}
                     </Card.Title>
                     <Card.Text
                       className="maintext mt-5"
@@ -99,8 +120,9 @@ const Testimonials = ({ obj }) => {
                     </Card.Text>
                     <Card.Text className="nametext mt-5">
                       <h4 className="text-white">
+                        {" "}
                         <span className="text-primary "> / </span> {""}
-                        {item.name}
+                        {item.company}
                       </h4>
                     </Card.Text>
                     <Card.Text className="skillText text-white">

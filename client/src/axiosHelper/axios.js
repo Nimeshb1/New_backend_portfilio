@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const rooURL =
-  process.env.NODE_ENV !== "production"
-    ? process.env.REACT_APP_REVIEW_URL
-    : process.env.REACT_APP_PRODUCTIONURL;
+const rooURL = "http://localhost:8000";
+// process.env.NODE_ENV !== "production"
+//   ? process.env.REACT_APP_REVIEW_URL
+//   : process.env.REACT_APP_PRODUCTIONURL;
 const rewiewUrl = rooURL + "/av1/v1/review";
 
 export const postReview = async (obj) => {

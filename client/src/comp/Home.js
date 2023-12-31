@@ -14,10 +14,14 @@ import { getReview } from "../axiosHelper/axios";
 
 const Home = () => {
   const [obj, setobj] = useState({});
+  const [loader, setloader] = useState(false);
   const fatchData = async () => {
-    const { data } = await getReview();
+    const { data, status } = await getReview();
 
-    setobj({ data });
+    if (status === "success") {
+      setobj({ data });
+      setloader(true);
+    }
   };
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const Home = () => {
       <About project={ProjectApi} />
       <MySkills />
       <Projects />
-      <Testimonials obj={obj} />
+      <Testimonials obj={obj} loader={loader} />
       <Review fatchData={fatchData} />
       <Study />
       <Contact />

@@ -24,7 +24,6 @@ const Contact = () => {
 
   const [fom, strfom] = useState(initial);
   const [loader, strloader] = useState(false);
-  console.log(fom);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     strfom({ ...fom, [name]: value });

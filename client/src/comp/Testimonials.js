@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
 
-const Testimonials = ({ obj }) => {
+const Testimonials = ({ obj, loader }) => {
   const [slide, setslide] = useState(0);
   const [current, setCurrent] = useState(1);
 
@@ -53,86 +53,93 @@ const Testimonials = ({ obj }) => {
             flexWrap: "nowrap",
           }}
         >
-          {obj.data?.map((item, i) => (
-            <div
-              key={i}
-              className="mainbodyt  d-lg-flex "
-              style={{
-                transform: `translateX(${slide}%)`,
-                transitionDuration: "1s",
-              }}
-            >
-              <Col className="newCard col-lg-5 col-4 ">
-                <div className="footerimg2">
-                  <img
-                    src={
-                      process.env.REACT_APP_PRODUCTIONURL + `/image/${item.img}`
-                    }
-                    alt=""
-                    style={{ objectFit: "contain" }}
-                    className="footerimg3"
-                    width={1500}
-                  />
-                </div>
-              </Col>
-              <Col className="col-lg-7" style={{ paddingLeft: "3rem" }}>
-                <Card
+          {loader === true ? (
+            <>
+              {obj.data?.map((item, i) => (
+                <div
+                  key={i}
+                  className="mainbodyt  d-lg-flex "
                   style={{
-                    backgroundColor: "transparent",
-                    border: "transparent",
+                    transform: `translateX(${slide}%)`,
+                    transitionDuration: "1s",
                   }}
                 >
-                  <Card.Body>
-                    <Card.Title
-                      className="workpalce text-white mt-5"
-                      style={{ fontSize: "3rem", WebkitTextStroke: "1px" }}
+                  <Col className="newCard col-lg-5 col-4 ">
+                    <div className="footerimg2">
+                      <img
+                        src={
+                          process.env.REACT_APP_PRODUCTIONURL +
+                          `/image/${item.img}`
+                        }
+                        alt=""
+                        style={{ objectFit: "contain" }}
+                        className="footerimg3"
+                        width={1500}
+                      />
+                    </div>
+                  </Col>
+                  <Col className="col-lg-7" style={{ paddingLeft: "3rem" }}>
+                    <Card
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "transparent",
+                      }}
                     >
-                      {" "}
-                      {item.gender === "male" ? (
-                        <i
-                          style={{
-                            fontSize: "2rem",
-                            color: "blue",
-                            marginRight: "7px",
-                          }}
-                          className="fa-solid fa-user"
-                        ></i>
-                      ) : (
-                        <span
-                          style={{
-                            fontSize: "2rem",
-                            color: "yellow",
-                            marginRight: "7px",
-                          }}
-                          class="material-symbols-outlined"
+                      <Card.Body>
+                        <Card.Title
+                          className="workpalce text-white mt-5"
+                          style={{ fontSize: "3rem", WebkitTextStroke: "1px" }}
                         >
-                          face_3
-                        </span>
-                      )}
-                      {item.name}
-                    </Card.Title>
-                    <Card.Text
-                      className="maintext mt-5"
-                      style={{ color: "white" }}
-                    >
-                      {" "}
-                      <h2>"{item.message}"</h2>{" "}
-                    </Card.Text>
-                    <Card.Text className="nametext mt-5">
-                      <h4 className="text-white">
-                        {" "}
-                        <span className="text-primary "> / </span> {""}
-                        {item.company}
-                      </h4>
-                    </Card.Text>
-                    <Card.Text className="skillText text-white">
-                      <h2>{item.position}</h2>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </div>
-          ))}
+                          {" "}
+                          {item.gender === "male" ? (
+                            <i
+                              style={{
+                                fontSize: "2rem",
+                                color: "blue",
+                                marginRight: "7px",
+                              }}
+                              className="fa-solid fa-user"
+                            ></i>
+                          ) : (
+                            <span
+                              style={{
+                                fontSize: "2rem",
+                                color: "yellow",
+                                marginRight: "7px",
+                              }}
+                              class="material-symbols-outlined"
+                            >
+                              face_3
+                            </span>
+                          )}
+                          {item.name}
+                        </Card.Title>
+                        <Card.Text
+                          className="maintext mt-5"
+                          style={{ color: "white" }}
+                        >
+                          {" "}
+                          <h2>"{item.message}"</h2>{" "}
+                        </Card.Text>
+                        <Card.Text className="nametext mt-5">
+                          <h4 className="text-white">
+                            {" "}
+                            <span className="text-primary "> / </span> {""}
+                            {item.company}
+                          </h4>
+                        </Card.Text>
+                        <Card.Text className="skillText text-white">
+                          <h2>{item.position}</h2>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </div>
+              ))}{" "}
+            </>
+          ) : (
+            <Spinner animation="border" variant="light"></Spinner>
+          )}
         </Row>
         <Row>
           <Col className="d-flex justify-content-center">

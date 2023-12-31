@@ -66,7 +66,9 @@ router.post("/", upload.single("img"), async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const data = await getReview();
-    res.json({
+
+    return res.json({
+      status: "success",
       data,
     });
   } catch (error) {

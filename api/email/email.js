@@ -24,14 +24,14 @@ export const adminSignupEmail = async ({ email, name, message }) => {
   try {
     // send mail with defined transport object
     let info = {
-      from: `form <${email}>`,
+      from: `${email}`,
       to: `${process.env.Email}`, // list of receivers
-      subject: `From ${email} name${name}`, // Subject line
+      subject: `From ${email} ${name}`, // Subject line
       text: message,
       html: `<b>${message}</b>`, // html body
     };
     let secinfo = {
-      from: `form <$${process.env.Email}>`,
+      from: `Nimesh Bista<$${process.env.Email}>`,
       to: `${email}`, // list of receivers
       subject: `Auto Generated mail `, // Subject line
       text: `Hi ${name}, Thank you for your Email. I have recived your email and will be touch soon. Thank you`,

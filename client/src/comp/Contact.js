@@ -1,5 +1,7 @@
-import React from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { postEmail } from "../axiosHelper/axios";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const fomobj = [
@@ -14,6 +16,37 @@ const Contact = () => {
       type: "email",
     },
   ];
+  let initial = {
+    name: "",
+    email: "",
+    message: "",
+  };
+
+  const [fom, strfom] = useState(initial);
+  const [loader, strloader] = useState(false);
+  console.log(fom);
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    strfom({ ...fom, [name]: value });
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    strloader(true);
+    const { status, message } = await postEmail(fom);
+    if (status === "success") {
+      strfom(initial);
+      toast[status](message);
+      setTimeout(() => {
+        strloader(false);
+      }, 4000);
+    } else {
+      toast[status](message);
+      setTimeout(() => {
+        strloader(false);
+      }, 900);
+    }
+  };
   return (
     <div className="secRow">
       <Container>
@@ -42,13 +75,15 @@ const Contact = () => {
           <Col
             style={{ display: "grid", alignItems: "center", padding: "2rem" }}
           >
-            <Form style={{ marginTop: "10rem" }}>
+            <Form style={{ marginTop: "10rem" }} onSubmit={handleOnSubmit}>
               {fomobj.map((item) => (
                 <input
                   key={item.type}
                   type={item.type}
                   name={item.name}
+                  required
                   placeholder={item.placeholder}
+                  onChange={handleOnChange}
                   style={{
                     borderBottom: "3px solid white",
                     background: "none",
@@ -67,6 +102,9 @@ const Contact = () => {
               ))}
               <textarea
                 placeholder="Describe About Project"
+                name="message"
+                required
+                onChange={handleOnChange}
                 style={{
                   borderBottom: "3px solid white",
                   background: "none",
@@ -82,20 +120,25 @@ const Contact = () => {
                   marginTop: "3rem",
                 }}
               />
-              <button
-                style={{
-                  background: "none",
-                  borderBottom: "3",
-                  color: "white",
-                  outline: "0px",
-                  borderBottom: "3px solid white",
-                }}
-              >
-                {" "}
-                <h4 className=" d-flex gap-2">
-                  Contact Me<i class="fa-solid fa-arrow-right mt-1"></i>{" "}
-                </h4>
-              </button>
+              {loader === true ? (
+                <Spinner animation="border" variant="light"></Spinner>
+              ) : (
+                <button
+                  type="submit"
+                  style={{
+                    background: "none",
+                    borderBottom: "3",
+                    color: "white",
+                    outline: "0px",
+                    borderBottom: "3px solid white",
+                  }}
+                >
+                  {" "}
+                  <h4 className=" d-flex gap-2">
+                    Contact Me<i class="fa-solid fa-arrow-right mt-1"></i>{" "}
+                  </h4>
+                </button>
+              )}
             </Form>
           </Col>
         </Row>

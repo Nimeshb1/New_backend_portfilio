@@ -1,7 +1,8 @@
 import express from "express";
-import { getReview, reviewPost } from "../moodle/moodle.js";
+import { emailsPost, getReview, reviewPost } from "../moodle/moodle.js";
 import multer from "multer";
 import path from "path";
+import { adminSignupEmail } from "../email/email.js";
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -70,6 +71,40 @@ router.get("/", async (req, res, next) => {
     });
   } catch (error) {
     next(error);
+  }
+});
+router.post("/email", async (req, res, next) => {
+  try {
+    const data = await emailsPost(req.body);
+
+    console.log(data);
+    adminSignupEmail(data);
+    if (data?._id) {
+      return res.json({
+        status: "success",
+        message:
+          "Email has been send. I will be in touch with you ASAP .🤙🤙🤙",
+      });
+    }
+    res.json({
+      status: "error",
+      message: "Something went wrong, Please try again",
+    });
+  } catch (error) {
+    const message = error.message;
+
+    if (
+      message.includes(
+        "emails validation failed: name: Path `name` is required., email: Path `email` is required., message: Path `message` is required."
+      )
+    ) {
+      res.json({
+        status: "error",
+        message:
+          "Your have already Send an Email. To send another message please refresh this browser. 😊😊",
+      });
+    }
+    next(error.message);
   }
 });
 

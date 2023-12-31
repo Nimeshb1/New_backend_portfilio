@@ -40,7 +40,7 @@ const Review = ({ fatchData }) => {
 
     setfom({ ...fom, [name]: files[0] });
   };
-  console.log(fom);
+
   const handelOnSubmitted = async (e) => {
     e.preventDefault();
     setloader(true);

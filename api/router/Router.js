@@ -106,6 +106,13 @@ router.post("/email", async (req, res, next) => {
           "Your have already Send an Email. To send another message please refresh this browser. 😊😊",
       });
     }
+
+    if (message.includes("emails validation failed")) {
+      res.json({
+        status: "error",
+        message: "Please fill all the empty from. 😊😊",
+      });
+    }
     next(error.message);
   }
 });
